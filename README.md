@@ -3,7 +3,7 @@
 # CUBIK token crowdsale frontend
 
 ## About
-The html frontend for CUBIK token crowdsale on Ethereum using web3, refer to the [crowdsale smart contract](Block42world/cubik-contracts/contracts/CubikCrowdsale.sol).
+The html frontend for CUBIK token crowdsale on Ethereum using web3, refer to the [crowdsale smart contract](https//github.com/Block42world/cubik-contracts/contracts/CubikCrowdsale.sol).
 
 ## Run a server
 ```
