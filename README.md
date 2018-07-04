@@ -14,7 +14,7 @@ A demo is available [here](http://www.sweatychair.com/block42/crowdsale.html).
 - A flatten version included for website using iFrame
 
 ## Modification
-To use this crowdsale page for your token ICO, change the token and crowdsale contract address at [crowdsale.js](crowdsale.js), then change their abi at [token_abi.js](token_abi.js) and [crowdsale_abi.js](crowdsale_abi.js).
+To use this crowdsale page for your token ICO, change the token and crowdsale contract address at [crowdsale.js](js/crowdsale.js), then change their abi at [token_abi.js](js/token_abi.js) and [crowdsale_abi.js](js/crowdsale_abi.js).
 
 ## Run a server
 ```
