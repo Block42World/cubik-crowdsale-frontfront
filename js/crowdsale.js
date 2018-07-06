@@ -1,5 +1,5 @@
-var tokenContractAddress = '0xb7818e8789f641dea6d8a320bafefd6a85cb35ec';
-var crowdsaleContractAddress = '0x8412fd7417ed8b9237763cc2509183758d9b87a7';
+var tokenContractAddress = '0x9a62d3825e07342568a34aa31aad38bb04250806';
+var crowdsaleContractAddress = '0xea9Be48045942fFB578e1E295e5401e86CBA8e8c';
 var tokenContractAddressRopsten = '0xb4fddd37602b03fa086c42bfa7b9739be38682c3'; // For testing in Ropsten testnet only
 var crowdsaleContractAddressRopsten = '0x382b3d898ccfa4ae5cb7375491bb771107e21b61'; // For testing in Ropsten testnet only
 
@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
         web3js = new Web3(web3.currentProvider);
-        // Debug only: override web3js
+        // Debug only: override web3js instead of using Mist/MetaMask
 //        web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); // Local-node, use Geth or testrpc to start one
 //        web3js = new Web3(new Web3.providers.HttpProvider('https://api.myetherapi.com/eth')); // Mainnet node
 //        web3js = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/93Pkd62SaFUrBJZC646A')); // Mainnet node 2
@@ -58,16 +58,6 @@ $('#buy-button').click(function (event) {
     .on('error', function (error) {
         $("#transaction-status").html("There was an error processing your contribution.<br />" + String(error));
     });
-
-//    
-//    crowdsale.send({from: userAccount, value: web3js.utils.toWei($('#buy-amount').val(), "ether")})
-//            .on("receipt", function (receipt) {
-//                $("#transaction-status").text("Purchased succeed!");
-//                getZombiesByOwner(userAccount).then(displayZombies);
-//            })
-//            .on("error", function (error) {
-//                $("#transaction-status").text("Purchased succeed!");
-//            });
 });
 
 function startApp() {
@@ -81,6 +71,8 @@ function startApp() {
         } else if (netId !== 1) {
             $('#testnet-warning').show().html("You're not connected! Open MetaMask and make sure you are on the Main Ethereum Network.");
         }
+        $('#token-address').html(getTokenUrl(tokenContractAddress));
+        $('#crowdsale-address').html(getContractUrl(crowdsaleContractAddress));
 
         // Get hold of contract instance
         CubikToken = new web3js.eth.Contract(tokenAbi, tokenContractAddress);
@@ -95,26 +87,14 @@ function startApp() {
             });
         });
     });
-    // listen for contribution in crowdsale contract
-//    crowdsale.events.TokenPurchase({filter: {purchaser: userAccount}})
-//    crowdsale.events.TokenPurchase()
-//            .on('data', function (event) {
-//                console.log(event);
-//                let tokenPurchase = event.returnValues;
-//                $('#transaction-status').html("Congrates! Your contribution has been processed and You received " + (tokenPurchase.amount / 1e18) + " CUBIKs!");
-//                updateAccountDetail();
-//            })
-//            .on('error', console.error);
 }
 
 function checkAccountDetail() {
     // Get default account
     web3js.eth.getAccounts().then(function (accounts) {
         // Just keep updating, so the user's balance is updated after purchase
-//        if (accounts[0] !== userAccount) {
-            userAccount = accounts[0];
-            updateAccountDetail();
-//        }
+        userAccount = accounts[0];
+        updateAccountDetail();
     });
 }
 
@@ -148,6 +128,18 @@ function toggleMetaMaskPrompt(toggle) {
 }
 
 function getTransactionUrl(address) {
+    return getEtherScanUrl("tx", address);
+}
+
+function getTokenUrl(address) {
+    return getEtherScanUrl("token", address);
+}
+
+function getContractUrl(address) {
+    return getEtherScanUrl("address", address);
+}
+
+function getEtherScanUrl(type, address) {
     var url = netId === 3 ? "ropsten.etherscan.io" : "etherscan.io";
-    return "<a href='https://" + url + "/tx/" + address + "' target='_blank'>" + address + "</a>";
+    return "<a href='https://" + url + "/" + type + "/" + address + "' target='_blank'>" + address + "</a>";
 }
