@@ -1,3 +1,10 @@
+var json = require('./js/Cubik.json');
+var tokenAbi = json.abi;
+json = require('./js/CubikCrowdsale.json');
+var crowdsaleAbi = json.abi;
+
+var Web3 = require('web3');
+
 var tokenContractAddress = '0x9a62d3825e07342568a34aa31aad38bb04250806';
 var crowdsaleContractAddress = '0xea9Be48045942fFB578e1E295e5401e86CBA8e8c';
 var tokenContractAddressRopsten = '0xb4fddd37602b03fa086c42bfa7b9739be38682c3'; // For testing in Ropsten testnet only

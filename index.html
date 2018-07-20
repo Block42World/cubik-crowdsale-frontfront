@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cubik Crowdsale</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="offset-md-2 col-md-8">
+            <div>
+                <div id="testnet-warning" class="alert alert-danger" role="alert" style="display:none">
+                </div>
+            </div>
+            <div class="mt-4">
+                <h1>Cubik Token Crowdsale</h1>
+            </div>
+            <div id="account-detail" class="card mt-2">
+                <div class="card-body">
+                    <div class="row border-bottom mb-2">
+                        <div class="col-12 mb-2">
+                            <h4 class="card-title mb-1">Address</h4>
+                            <span class="card-subtitle text-muted" id="address"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="card-title mb-1">ETH</h4>
+                            <span class="card-subtitle text-muted" id="eth-amount"></span>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="card-title mb-1">CUBIK</h4>
+                            <span class="card-subtitle text-muted" id="token-amount"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <h2>Purchase</h2>
+            </div>
+            <div class="card">
+                <form class="form card-body" role="form">
+                    <div class="form-group row">
+                        <label for="buy-amount" class="col-2 col-form-label">Receive</label>
+                        <div class="input-group col-8">
+                            <input id="buy-amount" type="number" min="1" value="1000" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Token</span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button id="buy-button" type="submit" class="btn btn-primary">Buy</button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Pay with</label>
+                        <div class="col-form-label col-8">
+                            <span class="col-form-label" id="total-eth">0.2 ETH</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Rate:</label>
+                        <div class="col-form-label col-8">
+                            1 ETH = 5000 CUBIK <small>(~USD $0.09 per CUBIK)</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <div id="no-metamask" class="alert alert-warning" role="alert" style="display:none">
+                    Please install and log in to <strong><a href="https://metamask.io/" target="_blank">MetaMask</a></strong>
+                </div>
+            </div>
+            <div>
+                <div id="transaction-status" class="alert alert-primary" role="alert" style="display:none">
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                 <div>
+                     <small class="text-muted">Token Address: <span id="token-address">0x9a62d3825e07342568a34aa31aad38bb04250806</span></small>
+                </div>
+                <div>
+                    <small class="text-muted">Crowdsale Address: <span id="crowdsale-address">0xea9Be48045942fFB578e1E295e5401e86CBA8e8c</span></small>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="js/bundle.js"></script>
+    </body>
+</html>
