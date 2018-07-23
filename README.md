@@ -11,7 +11,7 @@ A demo is available [here](http://www.sweatychair.com/block42/crowdsale.html).
 - Working with MetaMask, local and Infura nodes are commented and can be used for debugging
 - Bootstrap theme and styled
 - Web3 1.0 beta 34 (MetaMask still having issues on Web3 1.0 at the time of writing)
-- A absolute-linked version included for website can only use iFrame (such as Wix)
+- A inlined version for websites can only use iframe (such as Wix)
 
 ## Development
 
@@ -21,22 +21,25 @@ A demo is available [here](http://www.sweatychair.com/block42/crowdsale.html).
 - [Watchify](https://github.com/substack/watchify) `npm install -g watchify`
 - [http-server](https://www.npmjs.com/package/http-server) `npm install -g http-server -g`
 - [Concurrently](https://www.npmjs.com/package/concurrently) `npm install -g concurrently`
+- [Inliner] (https://github.com/remy/inliner) `npm install -g inliner` (Optional for inlining page for iframe)
 
 ### Install dependencies
 `npm i`
 
 ### Watch and bundle JavaScript
-`browserify main.js -o static/bundle.js`
+`watchify main.js -o js/bundle.js`
 
 ### Start web server in localhost with npm
 `npm start`
 
+### (Optional) Inline page for iframe
+`inliner index.html > index_iframe.html`
+
 ## Modification
-To use this crowdsale page for your token ICO, change the token and crowdsale contract address at [crowdsale.js](js/crowdsale.js), then change their ABI at [token_abi.js](js/token_abi.js) and [crowdsale_abi.js](js/crowdsale_abi.js).
+To use this crowdsale page for your token ICO, change the token and crowdsale contract address at [main.js](main.js). Then includes the truffle built JSONs, or simple change the ABI at [Cubik.json](js/Cubik.json) and [CubikCrowdsale.json](js/CubikCrowdsale.json).
 
 ## TODO
-- Optimize using Vue.js
+- Optimize using Vue.js or React.js
 - Provide a better auto flatten method using NPM
 - Fix contract event feedback currently not working with MetaMask
-- Put address and setting into JSON file for better structure
 - Add better graphic for MetaMask install instruction
