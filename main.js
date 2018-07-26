@@ -1,6 +1,6 @@
-var json = require('./js/Cubik.json')
+var json = require('./contracts/Cubik.json')
 var tokenAbi = json.abi
-json = require('./js/CubikCrowdsale.json')
+json = require('./contracts/CubikCrowdsale.json')
 var crowdsaleAbi = json.abi
 
 var tokenContractAddress = '0x9a62d3825e07342568a34aa31aad38bb04250806'
